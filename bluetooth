@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$1" == "setup" ]; then
+    echo "Limpando serviço do bluetooth..."
+    sudo systemctl restart bluetooth
+    echo "remove 08:57:FB:07:53:B1" | bluetoothctl
+    echo "scan on" | bluetoothctl
+    sleep 5
+    echo "pair 08:57:FB:07:53:B1" | bluetoothctl
+    echo "connect 08:57:FB:07:53:B1" | bluetoothctl
+    echo "Reinício completo."
+else
+    echo "Uso: $0 setup"
+fi
